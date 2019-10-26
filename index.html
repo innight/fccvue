@@ -3,18 +3,25 @@
 <head>
   <title>My first Vue app</title>
   <script src="https://unpkg.com/vue"></script>
+
 </head>
 
 <body>
   <div id="app">
-    <!-- v-for directive-->
-    <p v-for="(item,index) in list" :key="index">{{item}}</p>
-    <!-- v-if directive-->
-    <button v-on:click="toggle">toggle</button>
-    <h1 v-if="isOn">Hello Lisbon</h1>
-    <span v-if="isOn">Hello</span>
+    <h1>Preview</h1>
+    <p>
+      Enter your markdown code to see a HTML preview below.
+    </p>
+    <textarea 
+    
+      name="editor"
+      id="editor"
+      cols="60"
+      rows="10"
+      ></textarea>
   </div>
 
+  <script 
   <script>
       var app = new Vue({
       el: '#app',
@@ -33,7 +40,7 @@
 
     }
   })
-
   </script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
 </body>
 </html>
