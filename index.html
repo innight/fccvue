@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>My first Vue app</title>
   <script src="https://unpkg.com/vue"></script>
@@ -12,35 +13,41 @@
     <p>
       Enter your markdown code to see a HTML preview below.
     </p>
-    <textarea 
-    
-      name="editor"
-      id="editor"
-      cols="60"
-      rows="10"
-      ></textarea>
-  </div>
+    <div v-if="isOn">  
+      <textarea name="editor" id="editor" cols="60" rows="10" v-on:keyup="transformMarkdown" v-model="input"></textarea>
+    </div>
+    <!-- this is previews your output-->
+    <div id="preview" ref="preview">
 
-  <script 
+    </div>  
+    <button v-on:click="toggle">toggle</button>
+  
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
   <script>
-      var app = new Vue({
+    var app = new Vue({
       el: '#app',
-      data(){
-        return{
-          list: ['hello','fcc','lisbon'],
-          isOn:false
+      data() {
+        return {
+          list: ['hello', 'fcc', 'lisbon'],
+          isOn: false,
+          input: ""
         }
       },
-    methods:{
-      toggle() {
-        this.isOn =!this.isOn;
-      }
-    },
-    computed:{
+      methods: {
+        toggle() {
+          this.isOn = !this.isOn;
+        },
+        transformMarkdown(event) {
+         this.$refs.preview.innerHTML = marked(this.input,{breaks: true});
+        }
+      },
+      computed: {
 
-    }
-  })
+      }
+    })
   </script>
-  <script scr="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
+  
 </body>
+
 </html>
