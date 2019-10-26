@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-for directive-->
+    <p v-for="(item,index) in list" :key="index">{{item}}</p>
+    <!-- v-if directive-->
+    <button v-on:click="toggle">toggle</button>
+    <h1 v-if="isOn">Hello Lisbon</h1>
+    <span v-if="isOn">Hello</span>
+  </div>
+
+  <script>
+      var app = new Vue({
+      el: '#app',
+      data(){
+        return{
+          list: ['hello','fcc','lisbon'],
+          isOn:false
+        }
+      },
+    methods:{
+      toggle() {
+        this.isOn =!this.isOn;
+      }
+    },
+    computed:{
+
+    }
+  })
+
+  </script>
+</body>
+</html>
